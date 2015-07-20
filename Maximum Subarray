@@ -1,0 +1,49 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+        int sum=0;
+        int temp=0;
+        int front=0,back=0;
+        back = nums.capacity()-1;
+        
+        if (nums.empty())
+            return 0;
+        else if(nums.capacity()==1)
+             return nums[0];
+          
+          {
+              for (int i=0; i<nums.capacity();i++)
+             {
+                 temp += nums[i];
+                 if(temp <=0)
+                 {
+                     temp = 0;
+                     front = i+1;
+                 }
+               if (front >=nums.capacity())
+                return 0;
+             }
+              
+             for ( int i=nums.capacity()-1; i>=front; i--)
+             {
+                 temp += nums[i];
+                 if(temp <=0)
+                 {
+                    temp =0;
+                     back=i-1;
+                 }
+             }
+             if(front == back)
+                return nums[back];
+                else
+                for (int j = front; j<= back; j++)
+                {
+                    sum += nums[j];
+                }
+                return sum;
+          }
+    }
+    
+    
+};
