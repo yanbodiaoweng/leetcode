@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int counter=0;
+        for(int i=31;i>=0;--i){
+            if(n>=pow(2,i)){
+                counter+=1;
+                n-=pow(2,i);
+            }
+        }
+        return counter;
+    }
+};
